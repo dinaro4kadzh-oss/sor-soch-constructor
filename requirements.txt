@@ -1,0 +1,6 @@
+streamlit
+python-docx
+pypdf
+python-dotenv
+google-genai
+truststore
