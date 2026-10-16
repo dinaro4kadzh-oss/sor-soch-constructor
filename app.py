@@ -564,7 +564,7 @@ if submitted:
         st.error("Из файла не удалось извлечь текст. Возможно, PDF состоит из сканов. Попробуйте файл с распознанным текстом.")
         st.stop()
 
-      try:
+    try:
         with st.spinner("Gemini изучает учебный материал и формирует задания, ключи и дескрипторы. Это может занять минуту..."):
             tasks = generate_assessment(grade, assessment, quarter, max_score, objectives, combined_text, task_settings)
         st.session_state["generated_tasks"] = tasks
