@@ -72,21 +72,20 @@ def read_uploaded_file(uploaded_file):
         return f"ОШИБКА ЧТЕНИЯ ФАЙЛА: {error}"
     return ""
 
-
 def get_gemini_client():
-   api_key = (
-    st.secrets.get("GEMINI_API_KEY", "")
-    if hasattr(st, "secrets")
-    else ""
-) or os.getenv("GEMINI_API_KEY", "")
-api_key = api_key.strip()
+    api_key = (
+        st.secrets.get("GEMINI_API_KEY", "")
+        if hasattr(st, "secrets")
+        else ""
+    ) or os.getenv("GEMINI_API_KEY", "")
+    api_key = api_key.strip()
+
     if not api_key:
         raise RuntimeError(
-            "Не найден GEMINI_API_KEY. Проверьте, что файл .env находится "
-            "в папке проекта и содержит строку GEMINI_API_KEY=ваш_ключ."
+            "Не найден GEMINI_API_KEY. Проверьте настройки Secrets в "
+            "Streamlit Cloud или наличие ключа в файле .env."
         )
     return genai.Client(api_key=api_key)
-
 
 def extract_json(text):
     """Получает JSON даже если модель обрамит ответ markdown-блоком."""
