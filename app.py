@@ -573,9 +573,9 @@ if submitted:
             "max_score": max_score, "objectives": objectives, "sources": source_names,
         }
         st.success("Задания сгенерированы. Проверьте содержание перед использованием в классе.")
-    except Exception as error:
+        except Exception as error:
         st.error(f"Ошибка генерации: {error}")
-       st.info("Если ошибка связана с подключением, проверьте интернет и настройку GEMINI_API_KEY в секретах Streamlit Cloud или в файле .env. Не публикуйте сам ключ.")
+        st.info("Если ошибка связана с подключением, проверьте интернет и настройку GEMINI_API_KEY в секретах Streamlit Cloud или в файле .env. Не публикуйте сам ключ.")
 
 if "generated_tasks" in st.session_state and "generated_info" in st.session_state:
     tasks = st.session_state["generated_tasks"]
