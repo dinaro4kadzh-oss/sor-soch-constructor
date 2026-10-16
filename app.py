@@ -564,7 +564,7 @@ if submitted:
         st.error("Из файла не удалось извлечь текст. Возможно, PDF состоит из сканов. Попробуйте файл с распознанным текстом.")
         st.stop()
 
-    try:
+      try:
         with st.spinner("Gemini изучает учебный материал и формирует задания, ключи и дескрипторы. Это может занять минуту..."):
             tasks = generate_assessment(grade, assessment, quarter, max_score, objectives, combined_text, task_settings)
         st.session_state["generated_tasks"] = tasks
@@ -573,7 +573,7 @@ if submitted:
             "max_score": max_score, "objectives": objectives, "sources": source_names,
         }
         st.success("Задания сгенерированы. Проверьте содержание перед использованием в классе.")
-        except Exception as error:
+    except Exception as error:
         st.error(f"Ошибка генерации: {error}")
         st.info("Если ошибка связана с подключением, проверьте интернет и настройку GEMINI_API_KEY в секретах Streamlit Cloud или в файле .env. Не публикуйте сам ключ.")
 
